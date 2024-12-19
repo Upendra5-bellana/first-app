@@ -40,7 +40,7 @@ export const appRouter=createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/restaurant:resid",
+        path:"/restaurant/:resid",
         element:<RestaurantMenu />,
       }
 

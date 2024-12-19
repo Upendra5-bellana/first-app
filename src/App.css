@@ -84,3 +84,8 @@ background-color: #f0f0f0;
 .search{
   margin-right: 20px;
 }
+
+.linkRes{
+  text-decoration: none;
+  color: inherit;
+}

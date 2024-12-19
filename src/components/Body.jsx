@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react';
 import RestaurentCart from '../components/RestaurentCart';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 
 const Body=()=>{
@@ -81,6 +82,7 @@ const Body=()=>{
               // fliter the restaurent  cards and updated the UI 
               // SearchText
               // console.log(SearchText);
+              
               const filterRes= ListOfRestaurants.filter((res)=> res?.card?.card?.info?.name.toLowerCase().includes(SearchText.toLowerCase()));
               console.log(filterRes);
               setFilterRestaurant(filterRes);
@@ -88,14 +90,16 @@ const Body=()=>{
             } > Search </button>
           </div>
           <button className="filter" onClick={()=>{
-            const filterRes=ListOfRestaurants.filter((res)=> res.card.card.info.avgRating>4.5);
-            setListOfRestaurants(filterRes);
+            const filterRes=ListOfRestaurants.filter((res)=> res.card.card.info.avgRating>4.3);
+            console.log(ListOfRestaurants);
+            setFilterRestaurant(filterRes);
           }}> Top Rated Restaurents</button>
          </div>
          <div className="res-container">
             {
-            FilterRestaurant.map((restaurant)=> (<RestaurentCart key={restaurant?.card?.card?.info?.id} restData={restaurant} />))
-            }
+            FilterRestaurant.map((restaurant)=> (
+           <Link className="linkRes" key={restaurant?.card?.card?.info?.id} to={"/restaurant/" + restaurant?.card?.card?.info?.id }> <RestaurentCart  restData={restaurant} /> </Link>))
+}
          </div>
       </div>
     )
